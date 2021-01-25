@@ -26,7 +26,7 @@ class Lingkaran{
 
     public function hitungLingkaranUntuk($hitungLingkaran, $jarijari)
     {
-        switch ($tendensiSentral) {
+        switch ($hitungLingkaran) {
             case 'luas':
                 $this->luasLingkaran($jarijari);
                 break;

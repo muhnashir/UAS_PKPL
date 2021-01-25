@@ -3,7 +3,15 @@
 class Latihan
 {
     private $DISKON = 50000;
+
+    //Jumlah diskon karena 10%;
+    private $JUMLAH_DISKON = 0.1;
  
+
+    function filterStruk($arrBelanjaan){
+        $arrBelanjaan= $this->filterStrukYangLayakDapatDiskon($arrBelanjaan);
+        return array_map(array($this, "hasilDiskon"), $arrBelanjaan);
+    }
     /**
      * Memilah elemen array yang layak dapat diskon sesuai kriteria yang
 diterapkan pada function strukDiskon
@@ -27,19 +35,10 @@ diterapkan pada function strukDiskon
         }   
     }
 
-    function hasilDiskonan($arrBelanjaan){
-          $arrDiskon = array(
-            array('diskon' => 1000),
-            array('diskon' => 200),
-            array('diskon' => 300),
-            array('diskon' => 400),
-            array('diskon' => 500),  
-          );
-          
-        //   $result = array_map(function($arrDiskon,$arrBelanjaan){
-        //     //return array('nomorStruk'=>$nomorStruk,'jumlahBelanja'=>$jumlahBelanja,'diskon'=>$diskon);
-        //   });
-        return array_map("strukDiskon",$arrBelanjaan,$arrDiskon);
+    function hasilDiskon($arrBelanjaan){
+         $totalDiskon = $arrBelanjaan['jumlahBelanja'] * $this->JUMLAH_DISKON;
+         $arrBelanjaan['diskon'] = $totalDiskon;
+        return ($arrBelanjaan);
     }
 }
  
@@ -52,4 +51,4 @@ $arrBelanjaan = array(
 );
  
 $coba = new Latihan;
-print_r($coba->hasilDiskonan($arrBelanjaan));
+print_r($coba->filterStruk($arrBelanjaan));

@@ -2,13 +2,13 @@
 
 interface LingkaranInterface
 {
-    public function tendensiSentral($jarijari);
+    public function hitungLingkaran($jarijari);
 
 }
 
 class Luas implements LingkaranInterface
 {
-    public function tendensiSentral($jarijari)
+    public function hitungLingkaran($jarijari)
     {
         $phi = 3.14;
         Echo "Luas Lingkaran adalah : ". $phi*$jarijari*$jarijari;
@@ -17,7 +17,7 @@ class Luas implements LingkaranInterface
 
 class Keliling implements LingkaranInterface
 {
-    public function tendensiSentral($jarijari)
+    public function hitungLingkaran($jarijari)
     {
         $phi = 3.14;
         Echo "Keliling Lingkaran adalah : ". 2*$phi*$jarijari;
@@ -26,16 +26,16 @@ class Keliling implements LingkaranInterface
 
 class Diameter implements LingkaranInterface
 {
-    public function tendensiSentral($jarijari)
+    public function hitungLingkaran($jarijari)
     {
         Echo "Diameter Lingkaran adalah : ". 2*$jarijari;
     }
 }
 
 
-class NoTendensiSentral implements LingkaranInterface
+class NoHitungLingkaran implements LingkaranInterface
 {
-    public function tendensiSentral($jarijari)
+    public function hitungLingkaran($jarijari)
     {
         echo 'Anda tidak memilih.';
     }
@@ -43,9 +43,9 @@ class NoTendensiSentral implements LingkaranInterface
 
 class LingkaranPilihan
 {
-    public static function tendensiSentralUntuk($tendensiSentral)
+    public static function hitungLingkaranUntuk($hitungLingkaran)
     {
-        switch ($tendensiSentral) {
+        switch ($hitungLingkaran) {
             case 'luas':
                 return new Luas;
                 break;
@@ -56,17 +56,17 @@ class LingkaranPilihan
                 return new Diameter;
                 break;
             default:
-                return new NoTendensiSentral;
+                return new NoHitungLingkara;
         }
     }
 }
 
 $jarijari = 14;
 
-LingkaranPilihan::tendensiSentralUntuk('luas')->tendensiSentral($jarijari);
+LingkaranPilihan::hitungLingkaranUntuk('luas')->hitungLingkaran($jarijari);
 echo '<br>';
-LingkaranPilihan::tendensiSentralUntuk('keliling')->tendensiSentral($jarijari);
+LingkaranPilihan::hitungLingkaranUntuk('keliling')->hitungLingkaran($jarijari);
 echo '<br>';
-LingkaranPilihan::tendensiSentralUntuk('diameter')->tendensiSentral($jarijari);
+LingkaranPilihan::hitungLingkaranUntuk('diameter')->hitungLingkaran($jarijari);
 
 ?>
